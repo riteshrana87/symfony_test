@@ -1,0 +1,10 @@
+{# templates/home.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the E-Commerce Application</h1>
+    <p>This is the home page.</p>
+    <a href="{{ path('product_list') }}" class="btn btn-primary">View Products</a>
+{% endblock %}

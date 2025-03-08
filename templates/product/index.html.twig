@@ -1,0 +1,31 @@
+{# templates/product/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+    <h1>Product List</h1>
+
+    {% if products|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><a href="{{ path('product_list', {'sort': 'title'}) }}">Title</a></th>
+                    <th><a href="{{ path('product_list', {'sort': 'priceExclVat'}) }}">Price</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><a href="{{ path('product_detail', {'id': product.id}) }}">{{ product.title }}</a></td>
+                        <td>{{ product.priceExclVat }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {{ knp_pagination_render(products) }}
+    {% else %}
+        <p>No products found.</p>
+    {% endif %}
+{% endblock %}
